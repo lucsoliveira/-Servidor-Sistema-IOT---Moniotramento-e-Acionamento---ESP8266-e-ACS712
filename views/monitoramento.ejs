@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Dashboard | TCC - Smart Home</title>
+
+  <!--Biblioteca de Terceiros-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex@2.0.0"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js"
+    type="application/javascript"></script>
+
+  <!--Fim Biblioteca de Terceiros-->
+
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/dataTables.semanticui.min.css" />
+
+</head>
+
+<body>
+
+  <div id="app">
+    <!-- sidebar -->
+    <div class="ui sidebar inverted vertical menu sidebar-menu" id="sidebar">
+
+      <a href="/dashboard" class="item">
+        <div>
+          <i class="icon tachometer alternate"></i>
+          Dispositivos
+        </div>
+      </a>
+
+      <!--
+      <a href="#" class="item">
+        <div>
+          <i class="icon chart line"></i>
+          Estatísticas
+        </div>
+      </a>
+-->
+
+    </div>
+
+    <!-- sidebar -->
+    <!-- top nav -->
+    <nav class="ui top fixed inverted menu">
+      <div class="left menu">
+        <a href="#" class="sidebar-menu-toggler item" data-target="#sidebar">
+          <i class="sidebar icon"></i>
+        </a>
+        <a href="#" class="header item">
+          TCC - Smart Home
+        </a>
+      </div>
+
+      <div class="right menu">
+        <a href="#" class="item">
+          <i class="bell icon"></i>
+        </a>
+        <div class="ui dropdown item">
+          <i class="user cirlce icon"></i>
+          <div class="menu">
+            <a href="#" class="item">
+              <i class="info circle icon"></i> Perfil</a>
+            <a href="#" class="item">
+              <i class="wrench icon"></i>
+              Configurações</a>
+            <a href="#" class="item">
+              <i class="sign-out icon"></i>
+              Sair
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- top nav -->
+
+    <div class="pusher">
+
+      <div class="main-content">
+
+
+        <div class="ui grid stackable padded">
+
+          <div class="column">
+
+            <div class="ui padded segment">
+
+              <smart-home-mqtt uid="<%= uid %>"></smart-home-mqtt>
+
+              <div class="ui menu top">
+                <a class="active item" data-tab="timeline"><i class="icon clock outline"></i>Acionamentos</a>
+                <a class="item" data-tab="estatisticas"><i class="icon chart line"></i>Estatísticas</a>
+                <a class="item" data-tab="historico"><i class="icon history"></i>Histórico de Consumo</a>
+              </div>
+
+              <div class="ui tab active" data-tab="timeline">
+
+                <timeline-acionamentos uid="<%= uid %>">
+                </timeline-acionamentos>
+
+              </div>
+
+              <div class="ui tab" data-tab="estatisticas">
+
+                <!--ESTATISTICAS DE CONSUMO-->
+                <estatistica-de-consumo uid="<%= uid %>"></estatistica-de-consumo>
+
+              </div>
+
+              <div class="ui tab" data-tab="historico">
+
+                <historico-consumo uid="<%= uid %>"></historico-consumo>
+
+              </div>
+
+            </div>
+
+
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
+    integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function () {
+
+      $('.ui.dropdown').dropdown();
+      $('.sidebar-menu-toggler').on('click', function () {
+        var target = $(this).data('target');
+        $(target)
+          .sidebar({
+            dinPage: true,
+            transition: 'overlay',
+            mobileTransition: 'overlay'
+          })
+          .sidebar('toggle');
+      });
+
+      $('.top.menu .item').tab(); //refente as abas
+
+    });
+  </script>
+  <!--Bibliotecas de Terceiros-->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.3/js/dataTables.semanticui.min.js"></script>
+
+
+  <!--Biblitecas Vue-->
+  <script type="application/javascript" src="/vue/dispositivoVue.js"></script>
+  <script type="application/javascript" src="/vue/acionamentoVue.js"></script>
+  <script type="application/javascript" src="/vue/estatisticaVue.js"></script>
+
+  <script src="/vue/appVue.js"></script>
+
+
+</body>
+
+</html>

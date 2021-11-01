@@ -1,0 +1,27 @@
+{
+  "name": "servidor",
+  "version": "1.0.0",
+  "description": "Complementos necessários para a execução do trabalho de conclusão de curso para o curso de Engenharia Eletrônica pela Universidade Tecnológica Federal do Paraná",
+  "main": "appServidor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tcc",
+    "lucas",
+    "oliveira",
+    "smart",
+    "home",
+    "iot"
+  ],
+  "author": "Lucas de Oliveira Pereira",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.22.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mosca": "^2.8.3",
+    "mysql2": "^2.3.0",
+    "sequelize": "^6.6.5"
+  }
+}
