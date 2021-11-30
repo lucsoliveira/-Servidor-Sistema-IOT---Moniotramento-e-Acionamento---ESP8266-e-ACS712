@@ -344,8 +344,6 @@ Vue.component('historico-consumo', {
             <tr>
                 <th>Data</th>
                 <th>Corrente (A)</th>
-                <th>Carga (Ω)</th>
-                <th>Potência (W)</th>
             </tr>
         </thead>
 
@@ -354,8 +352,6 @@ Vue.component('historico-consumo', {
             <tr v-for="item in coletas">
                 <td>{{ formatarData(item.createdAt) }}</td>
                 <td>{{ (item.corrente).toFixed(3) }}</td>
-                <td>{{ (item.carga).toFixed(3) }}</td>
-                <td>{{ (item.corrente * valorTensao).toFixed(3) }}</td>
             </tr>
 
         </tbody>
@@ -364,8 +360,6 @@ Vue.component('historico-consumo', {
             <tr>
             <th>Data</th>
             <th>Corrente (A)</th>
-            <th>Carga (Ω)</th>
-            <th>Potência (W)</th>
             </tr>
         </tfoot>
 
