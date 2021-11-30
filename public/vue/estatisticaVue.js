@@ -207,9 +207,7 @@ Vue.component('estatistica-de-consumo', {
   <thead>
     <tr><th>Dia</th>
     <th>Corrente Média (A)</th>
-    <th>Carga Média (Ω)</th>
-    <th>Tensão Média (V)</th>
-    <th>Potência Instantânea Média (W)</th>
+    <th>Potência Instantânea Estimada (W)</th>
     <th>Tempo Ligado</th>
     <th>Estimativa de Custo (R$)</th>
   </tr></thead>
@@ -218,12 +216,8 @@ Vue.component('estatistica-de-consumo', {
     <tr v-for="item in acumuladoCorrente">
       <td data-label="dia">{{ item.day }}</td>
       <td data-label="acumulado">{{ (item.mediaCorrente).toFixed(casasDecimais) }}</td>
-      <td data-label="">{{ (item.mediaCarga).toFixed(casasDecimais) }}</td>
-      <td data-label="">{{ (item.mediaCarga * item.mediaCorrente).toFixed(2) }}</td>
-      <td data-label="">{{ ( (item.mediaCarga * item.mediaCorrente) * item.mediaCorrente ).toFixed(2) }}</td>
-      
+      <td data-label="">{{ ( (item.mediaCarga * item.mediaCorrente) * item.mediaCorrente ).toFixed(2) }}</td>  
       <td data-label="custoDia">{{ formatahhmmss(item.count) }}</td>
-
       <td data-label="">{{ getCustoConsumo(item.mediaCarga, item.mediaCorrente, item.count, valorTarifa).toFixed(4) }}</td>
       
     </tr>
