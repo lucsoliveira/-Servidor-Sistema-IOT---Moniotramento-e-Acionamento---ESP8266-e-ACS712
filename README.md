@@ -175,4 +175,4 @@ Lucas de Oliveira | [LinkedIn](https://www.linkedin.com/in/engenheiro-lucas-oliv
 
 [linkedin-url]: https://github.com/lucsoliveira/NotificaB3
 
-[dashboard-screenshot]: ./ReadMe/dashboard.png
+[dashboard-screenshot]: ./ReadMe/dashboard.gif
